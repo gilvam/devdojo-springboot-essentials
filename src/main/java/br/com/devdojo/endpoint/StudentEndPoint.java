@@ -6,17 +6,15 @@ import br.com.devdojo.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("student")
+@RequestMapping("students")
 public class StudentEndPoint {
 
     private final DateUtil dateUtil;
@@ -41,5 +39,11 @@ public class StudentEndPoint {
             return new ResponseEntity<>(new CustomErrorType("Student not found"), HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(Student.studentList.get(index), HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> getStudentById(@RequestBody Student student) {
+        Student.studentList.add(student);
+        return new ResponseEntity<>(student, HttpStatus.OK);
     }
 }
