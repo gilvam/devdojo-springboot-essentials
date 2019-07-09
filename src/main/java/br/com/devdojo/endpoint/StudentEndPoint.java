@@ -40,10 +40,15 @@ public class StudentEndPoint {
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/findByName/{name}")
+    public ResponseEntity<?> getStudentByName(@PathVariable String name) {
+        return new ResponseEntity<>(this.studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
+    }
+
     //@RequestMapping(method = RequestMethod.POST)
     @PostMapping
     public ResponseEntity<?> save(@RequestBody Student student) {
-        return new ResponseEntity<>(this.studentDAO.save(student), HttpStatus.OK);
+        return new ResponseEntity<>(this.studentDAO.save(student), HttpStatus.CREATED);
     }
 
     //@RequestMapping(method = RequestMethod.DELETE)
