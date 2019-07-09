@@ -1,6 +1,7 @@
 package br.com.devdojo.endpoint;
 
 import br.com.devdojo.error.CustomErrorType;
+import br.com.devdojo.error.ResourceNotFoundException;
 import br.com.devdojo.model.Student;
 import br.com.devdojo.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +32,8 @@ public class StudentEndPoint {
     //@RequestMapping(method = RequestMethod.GET, path = "/{id}")
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
-
+        this.verifyIfStudentExists(id);
         Optional<Student> student = this.studentDAO.findById(id);
-
-        if (student == null) {
-            return new ResponseEntity<>(new CustomErrorType("Student not found"), HttpStatus.NOT_FOUND);
-        }
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
@@ -61,7 +58,14 @@ public class StudentEndPoint {
     //@RequestMapping(method = RequestMethod.PUT)
     @PutMapping
     public ResponseEntity<?> update(@RequestBody Student student) {
+        this.verifyIfStudentExists(student.getId());
         this.studentDAO.save(student);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    private void verifyIfStudentExists(Long id) {
+        if (!this.studentDAO.findById(id).isPresent()) {
+            throw new ResourceNotFoundException("Student not found for ID: " + id);
+        }
     }
 }
