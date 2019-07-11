@@ -4,7 +4,7 @@ import br.com.devdojo.error.model.Field;
 
 import java.util.List;
 
-public class ValidationErrorDetails extends ErrorDetail {
+public class ValidationErrorDetails extends ErrorDetails {
     private List<Field> fields;
 
     public List<Field> getFields() {
