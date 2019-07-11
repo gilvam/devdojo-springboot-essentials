@@ -3,6 +3,7 @@ package br.com.devdojo.handler;
 import br.com.devdojo.error.ResourceNotFoundDetails;
 import br.com.devdojo.error.ResourceNotFoundException;
 import br.com.devdojo.error.ValidationErrorDetails;
+import br.com.devdojo.error.model.Field;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -10,10 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
 
 @ControllerAdvice
 public class RestExceptionHandler {
@@ -34,21 +32,21 @@ public class RestExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         List<FieldError> fieldErrors = e.getBindingResult().getFieldErrors();
-        List<String> fields = fieldErrors.stream().map(FieldError::getField).collect(Collectors.toList());
-        List<String> fieldsMessages = fieldErrors.stream().map(FieldError::getDefaultMessage).collect(Collectors.toList());
-        List<String> objectNames = fieldErrors.stream().map(FieldError::getObjectName).collect(Collectors.toList());
 
-//        List<String> fields2 = fieldErrors.stream().map(FieldError::getField).collect(Collectors.toList());
-//
-//        List<Object> fields3 = fieldErrors.stream().map(item ->
-//                new Object() {
-//                    String field = item.getField();
-//                    String objectName = item.getObjectName();
-//                    String defaultMessage = item.getDefaultMessage();
-//                }
-//        ).collect(Collectors.toList());
-//
-//        Object x = fields3.get(0);
+        List<Field> fields = new ArrayList<>();
+
+        for (FieldError field : fieldErrors) {
+            Optional<Field> fieldDetailExist = fields.stream()
+                    .filter(item -> item.getName().equals(field.getField()))
+                    .findFirst();
+
+            if (fieldDetailExist.isPresent()) {
+                fieldDetailExist.get().addMessage(field.getDefaultMessage());
+
+            } else {
+                fields.add(new Field(field.getField(), field.getObjectName(), field.getDefaultMessage()));
+            }
+        }
 
         ValidationErrorDetails val = ValidationErrorDetails.Builder
                 .newBuilder()
@@ -57,9 +55,7 @@ public class RestExceptionHandler {
                 .title("Field validation error")
                 .detail("Field validation error")
                 .developerMessage(e.getClass().getName())
-                .field(fields)
-                .fieldMessage(fieldsMessages)
-                .objectNames(objectNames)
+                .fieldDetails(fields)
                 .build();
         return new ResponseEntity<>(val, HttpStatus.BAD_REQUEST);
     }

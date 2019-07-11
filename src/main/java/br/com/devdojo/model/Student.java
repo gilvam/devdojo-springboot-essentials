@@ -1,13 +1,14 @@
 package br.com.devdojo.model;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.*;
 
 @Entity
 public class Student extends AbstractEntity {
 
     @NotEmpty(message = "Campon nome do estudante é obrigatório")
+    @NotNull
+    @Size(min = 1, max = 30)
     private String name;
 
     @NotEmpty

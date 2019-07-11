@@ -1,34 +1,18 @@
 package br.com.devdojo.error;
 
+import br.com.devdojo.error.model.Field;
+
 import java.util.List;
 
 public class ValidationErrorDetails extends ErrorDetail {
-    private List<String> fields;
-    private List<String> fieldMessages;
-    private List<String> objectNames;
+    private List<Field> fields;
 
-    public List<String> getFields() {
+    public List<Field> getFields() {
         return fields;
     }
 
-    public void setFields(List<String> fields) {
+    public void setFields(List<Field> fields) {
         this.fields = fields;
-    }
-
-    public List<String> getFieldMessages() {
-        return fieldMessages;
-    }
-
-    public void setFieldMessages(List<String> fieldMessages) {
-        this.fieldMessages = fieldMessages;
-    }
-
-    public List<String> getObjectNames() {
-        return objectNames;
-    }
-
-    public void setObjectNames(List<String> objectNames) {
-        this.objectNames = objectNames;
     }
 
     public static final class Builder {
@@ -37,9 +21,7 @@ public class ValidationErrorDetails extends ErrorDetail {
         private String detail;
         private Long timestamp;
         private String developerMessage;
-        private List<String> fields;
-        private List<String> fieldMessages;
-        private List<String> objectNames;
+        private List<Field> fields;
 
         private Builder() {
         }
@@ -73,18 +55,8 @@ public class ValidationErrorDetails extends ErrorDetail {
             return this;
         }
 
-        public ValidationErrorDetails.Builder field(List<String> fields) {
+        public ValidationErrorDetails.Builder fieldDetails(List<Field> fields) {
             this.fields = fields;
-            return this;
-        }
-
-        public ValidationErrorDetails.Builder fieldMessage(List<String> fieldMessages) {
-            this.fieldMessages = fieldMessages;
-            return this;
-        }
-
-        public ValidationErrorDetails.Builder objectNames(List<String> objectNames) {
-            this.objectNames = objectNames;
             return this;
         }
 
@@ -96,8 +68,6 @@ public class ValidationErrorDetails extends ErrorDetail {
             resourceNotFoundDetails.setTitle(this.title);
             resourceNotFoundDetails.setDetail(this.detail);
             resourceNotFoundDetails.fields = fields;
-            resourceNotFoundDetails.fieldMessages = fieldMessages;
-            resourceNotFoundDetails.objectNames = objectNames;
             return resourceNotFoundDetails;
         }
     }
