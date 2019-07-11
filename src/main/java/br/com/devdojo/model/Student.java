@@ -1,15 +1,18 @@
 package br.com.devdojo.model;
 
 import javax.persistence.Entity;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Student extends AbstractEntity {
 
+    @NotEmpty(message = "Campon nome do estudante é obrigatório")
     private String name;
+
+    @NotEmpty
+    @Email
+    private String email;
 
     public String getName() {
         return name;
@@ -17,6 +20,14 @@ public class Student extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 
