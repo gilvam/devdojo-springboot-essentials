@@ -52,7 +52,7 @@ public class StudentEndPoint {
 
     //@RequestMapping(method = RequestMethod.DELETE)
     @DeleteMapping(path = "/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         this.studentDAO.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

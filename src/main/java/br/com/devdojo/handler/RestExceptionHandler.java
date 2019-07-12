@@ -36,7 +36,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
     @Override
-    public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    public ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
+                                                               HttpHeaders headers,
+                                                               HttpStatus status,
+                                                               WebRequest request) {
         List<FieldError> fieldErrors = ex.getBindingResult().getFieldErrors();
 
         List<Field> fields = new ArrayList<>();
@@ -50,7 +53,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 fieldDetailExist.get().addMessage(field.getDefaultMessage());
 
             } else {
-                fields.add(new Field(field.getField(), field.getObjectName(), field.getDefaultMessage()));
+                fields.add(new Field(field.getField(),
+                        field.getObjectName(), field.getDefaultMessage()));
             }
         }
 
@@ -82,4 +86,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .build();
         return new ResponseEntity<>(errorDetails, headers, status);
     }
+
+    
 }

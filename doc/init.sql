@@ -1,5 +1,6 @@
-create database school;
+create database school ;
 
+select * from student;
 INSERT INTO public.student (id, name, email) VALUES (1,'Willian_1', 'willian.saude@devdojo.com.br');
 INSERT INTO public.student (id, name, email) VALUES (2,'Willian_2', 'willian.saude@devdojo.com.br');
 INSERT INTO public.student (id, name, email) VALUES (3,'Willian_3', 'willian.saude@devdojo.com.br');
@@ -24,3 +25,10 @@ INSERT INTO public.student (id, name, email) VALUES (21,'Willian_21', 'willian.s
 INSERT INTO public.student (id, name, email) VALUES (22,'Willian_22', 'willian.saude@devdojo.com.br');
 INSERT INTO public.student (id, name, email) VALUES (23,'Willian_23', 'willian.saude@devdojo.com.br');
 INSERT INTO public.student (id, name, email) VALUES (24,'Willian_24', 'willian.saude@devdojo.com.br');
+
+select * from users;
+-- users
+-- INSERT INTO public.users (id, name) VALUES (24,'Willian_24', 'willian.saude@devdojo.com.br');
+INSERT INTO public.users (id, admin, name, password, username) VALUES
+(0, true, 'Shimazu Toyohisa', '$2a$10$a9lt.ROeVoCyAWFtwRiMMeqtyp9wnXf3KntiDajGmgp2YL5Hcd1p2', 'admin'),
+(1, false, 'Odakoru Tsubasa', '$2a$10$a9lt.ROeVoCyAWFtwRiMMeqtyp9wnXf3KntiDajGmgp2YL5Hcd1p2', 'user');
