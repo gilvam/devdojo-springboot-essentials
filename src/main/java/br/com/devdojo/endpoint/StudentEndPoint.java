@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("students")
+@RequestMapping("v1")
 public class StudentEndPoint {
 
 
@@ -26,32 +26,32 @@ public class StudentEndPoint {
     }
 
     //@RequestMapping(method = RequestMethod.GET)
-    @GetMapping
+    @GetMapping(path = "students")
     public ResponseEntity<?> listAll(Pageable pageable) {
         return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
 
     //@RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    @GetMapping(path = "/{id}")
+    @GetMapping(path = "students/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
         this.verifyIfStudentExists(id);
         Optional<Student> student = this.studentDAO.findById(id);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/findByName/{name}")
+    @GetMapping(path = "students/findByName/{name}")
     public ResponseEntity<?> getStudentByName(@PathVariable String name) {
         return new ResponseEntity<>(this.studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
     }
 
     //@RequestMapping(method = RequestMethod.POST)
-    @PostMapping
+    @PostMapping(path = "admin/students")
     public ResponseEntity<?> save(@Valid @RequestBody Student student) {
         return new ResponseEntity<>(this.studentDAO.save(student), HttpStatus.CREATED);
     }
 
     //@RequestMapping(method = RequestMethod.DELETE)
-    @DeleteMapping(path = "/{id}")
+    @DeleteMapping(path = "admin/students/{id}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         this.studentDAO.deleteById(id);
@@ -59,7 +59,7 @@ public class StudentEndPoint {
     }
 
     //@RequestMapping(method = RequestMethod.PUT)
-    @PutMapping
+    @PutMapping(path = "admin/students")
     public ResponseEntity<?> update(@RequestBody Student student) {
         this.verifyIfStudentExists(student.getId());
         this.studentDAO.save(student);

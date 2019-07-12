@@ -21,7 +21,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .anyRequest().authenticated() // qualquer requisição deve ser autenticada
+//                .anyRequest().authenticated() // qualquer requisição deve ser autenticada
+                .antMatchers("/*/students/**").hasRole("USER")
+                .antMatchers("/*/admin/**").hasRole("ADMIN")
                 .and().httpBasic() // manda no header a autorização
                 .and().csrf().disable()
                 ;
