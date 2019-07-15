@@ -1,0 +1,17 @@
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/error/ResourceNotFoundDetails.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/repository/UserRepository.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/model/User.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/handler/RestExceptionHandler.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/repository/StudentRepository.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/config/SecurityConfig.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/error/CustomErrorType.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/endpoint/StudentEndPoint.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/error/ResourceNotFoundException.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/error/ErrorDetails.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/model/Student.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/util/DateUtil.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/error/ValidationErrorDetails.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/service/CustomUserDetailService.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/model/AbstractEntity.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/DevDojoSpringBootEssentialsApplication.java
+/Users/gil/IdeaProjects/devdojo-springboot-essentials/src/main/java/br/com/devdojo/error/model/Field.java

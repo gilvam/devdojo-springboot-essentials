@@ -10,9 +10,10 @@
     </parent>
     <groupId>br.com.devdojo</groupId>
     <artifactId>demo</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>demo</name>
-    <description>Curso de SpringBoot do DevDojo</description>
+    <description>Curso de SpringBoot Do DevDojo</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -43,6 +44,12 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>4.2.3.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>LATEST</version>
@@ -56,41 +63,34 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <!--<dependency>-->
-        <!--    <groupId>org.springframework.security</groupId>-->
-        <!--    <artifactId>spring-security-test</artifactId>-->
-        <!--    <version>4.2.3.RELEASE</version>-->
-        <!--    <scope>test</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--    <groupId>com.h2database</groupId>-->
-        <!--    <artifactId>h2</artifactId>-->
-        <!--    <scope>test</scope>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--    <groupId>io.jsonwebtoken</groupId>-->
-        <!--    <artifactId>jjwt</artifactId>-->
-        <!--    <version>0.7.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--    <groupId>io.springfox</groupId>-->
-        <!--    <artifactId>springfox-swagger2</artifactId>-->
-        <!--    <version>2.7.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--    <groupId>io.springfox</groupId>-->
-        <!--    <artifactId>springfox-swagger-ui</artifactId>-->
-        <!--    <version>2.7.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.7.0</version>
+        </dependency>
     </dependencies>
 
     <build>
+        <finalName>devdojo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
             </plugin>
         </plugins>
     </build>

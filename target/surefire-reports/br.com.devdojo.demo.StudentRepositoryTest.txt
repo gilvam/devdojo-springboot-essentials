@@ -1,0 +1,74 @@
+-------------------------------------------------------------------------------
+Test set: br.com.devdojo.demo.StudentRepositoryTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0.569 s <<< FAILURE! - in br.com.devdojo.demo.StudentRepositoryTest
+createWhenEmailIsNullShoudThrowConstraintViolatoinException(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.042 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenEmailIsNullShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:84)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenEmailIsNullShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:84)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenEmailIsNullShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:84)
+
+createWhenEmailIsNotValidShoudThrowConstraintViolatoinException(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.007 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenEmailIsNotValidShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:95)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenEmailIsNotValidShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:95)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenEmailIsNotValidShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:95)
+
+createShouldPersistData(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.005 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createShouldPersistData(StudentRepositoryTest.java:30)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createShouldPersistData(StudentRepositoryTest.java:30)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.createShouldPersistData(StudentRepositoryTest.java:30)
+
+deleteShoudRemoveData(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.005 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.deleteShoudRemoveData(StudentRepositoryTest.java:40)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.deleteShoudRemoveData(StudentRepositoryTest.java:40)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.deleteShoudRemoveData(StudentRepositoryTest.java:40)
+
+createWhenNameIsNullShoudThrowConstraintViolatoinException(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.004 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenNameIsNullShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:75)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenNameIsNullShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:75)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.createWhenNameIsNullShoudThrowConstraintViolatoinException(StudentRepositoryTest.java:75)
+
+updateShoudChangeAndPersistData(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.004 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.updateShoudChangeAndPersistData(StudentRepositoryTest.java:48)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.updateShoudChangeAndPersistData(StudentRepositoryTest.java:48)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.updateShoudChangeAndPersistData(StudentRepositoryTest.java:48)
+
+findByNameIgnoreCaseContainingShoudIgnoreCase(br.com.devdojo.demo.StudentRepositoryTest)  Time elapsed: 0.004 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.findByNameIgnoreCaseContainingShoudIgnoreCase(StudentRepositoryTest.java:64)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at br.com.devdojo.demo.StudentRepositoryTest.findByNameIgnoreCaseContainingShoudIgnoreCase(StudentRepositoryTest.java:64)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: syntax error at or near "value"
+  Posição: 11
+	at br.com.devdojo.demo.StudentRepositoryTest.findByNameIgnoreCaseContainingShoudIgnoreCase(StudentRepositoryTest.java:64)
+

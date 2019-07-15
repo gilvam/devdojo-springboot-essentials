@@ -26,20 +26,20 @@ public class StudentEndPoint {
     }
 
     //@RequestMapping(method = RequestMethod.GET)
-    @GetMapping(path = "students")
+    @GetMapping(path = "admin/students")
     public ResponseEntity<?> listAll(Pageable pageable) {
         return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
 
     //@RequestMapping(method = RequestMethod.GET, path = "/{id}")
-    @GetMapping(path = "students/{id}")
+    @GetMapping(path = "protected/students/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id) {
         this.verifyIfStudentExists(id);
         Optional<Student> student = this.studentDAO.findById(id);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
-    @GetMapping(path = "students/findByName/{name}")
+    @GetMapping(path = "protected/students/findByName/{name}")
     public ResponseEntity<?> getStudentByName(@PathVariable String name) {
         return new ResponseEntity<>(this.studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
     }
