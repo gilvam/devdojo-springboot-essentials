@@ -6,14 +6,22 @@ import javax.validation.constraints.*;
 @Entity
 public class Student extends AbstractEntity {
 
-    @NotEmpty(message = "Campon nome do estudante é obrigatório")
+    @NotEmpty(message = "Campo nome do estudante é obrigatório")
     @NotNull
     @Size(min = 1, max = 30)
     private String name;
 
-    @NotEmpty
+    @NotEmpty(message = "Digite um email válido")
     @Email
     private String email;
+
+    public Student() {
+    }
+
+    public Student(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
     public String getName() {
         return name;
