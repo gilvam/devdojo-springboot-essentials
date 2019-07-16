@@ -3,6 +3,7 @@ package br.com.devdojo.endpoint;
 import br.com.devdojo.error.ResourceNotFoundException;
 import br.com.devdojo.model.Student;
 import br.com.devdojo.repository.StudentRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,7 @@ public class StudentEndPoint {
 
     //@RequestMapping(method = RequestMethod.GET)
     @GetMapping(path = "admin/students")
+    @ApiOperation(value = "Return a list witch all students", response = Student[].class) // mensagem e retorno swagger
     public ResponseEntity<?> listAll(Pageable pageable) {
         return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
     }
@@ -35,7 +37,7 @@ public class StudentEndPoint {
     //@RequestMapping(method = RequestMethod.GET, path = "/{id}")
     @GetMapping(path = "protected/students/{id}")
     public ResponseEntity<?> getStudentById(@PathVariable("id") Long id, Authentication authentication) {
-        System.out.println("authentication: "+ authentication);
+        System.out.println("authentication: " + authentication);
 
         this.verifyIfStudentExists(id);
         Optional<Student> student = this.studentDAO.findById(id);
