@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.cors.CorsConfiguration;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true) // usar @PreAuthorize("hasRole('ADMIN')") no endPoint para uma ação
@@ -20,13 +19,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-//                .anyRequest().authenticated() // qualquer requisição deve ser autenticada
+        http.cors().and().csrf().disable().authorizeRequests()
+                .antMatchers(HttpMethod.GET, SecurityConstants.SIGN_UP_URL).permitAll()
                 .antMatchers("/*/students/**").hasRole("USER")
                 .antMatchers("/*/admin/**").hasRole("ADMIN")
-                .and().httpBasic() // manda no header a autorização
-                .and().csrf().disable()
-                ;
+                .and()
+                .addFilter(new JWTAuthenticationFilter(authenticationManager()))    // gera token e retorna quando faz login
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), customUserDetailService)) // verifica token e ROLE a toda rota REST consultada
+        ;
     }
 
     @Override
